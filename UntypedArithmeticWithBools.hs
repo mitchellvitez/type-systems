@@ -33,9 +33,7 @@ evalOne (TmIf _ (TmTrue _) t f) =
 evalOne (TmIf _ (TmFalse _) t f) =
   Just f
 evalOne (TmIf i t1 t2 t3) =
-  case evalOne t1 of
-    Just t -> Just $ TmIf i t t2 t3
-    Nothing -> Nothing
+  evalOne t1 >>= \t -> Just $ TmIf i t t2 t3
 evalOne (TmSucc i t1) =
   TmSucc i <$> evalOne t1
 evalOne (TmPred _ (TmZero _)) =
