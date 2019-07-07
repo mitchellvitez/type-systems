@@ -51,14 +51,13 @@ typeOf ctx (TmAbs _ x t1 t2) =
 typeOf ctx (TmApp i t1 t2) =
   let tyT1 = typeOf ctx t1
       tyT2 = typeOf ctx t2
-  in
-  case tyT1 of
+  in case tyT1 of
     TyArr tyT11 tyT12 ->
       if subtype tyT2 tyT11 then tyT12
       else error $ i ++ "\n parameter type mismatch"
     _ -> error $ i ++ "\n arrow type expected"
 
-lookupLabel :: Eq a => a -> [(a, b)] -> b
+lookupLabel :: String -> [(String, Ty)] -> Ty
 lookupLabel l xs =
   case lookup l xs of
     Just x -> x
