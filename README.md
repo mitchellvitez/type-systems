@@ -9,3 +9,4 @@ Some content adapted from Pierce's excellent _Types and Programming Languages_, 
 - Untyped arithmetic with naturals and bools
 - Untyped lambda calculus with simple term substitution in context
 - Simply typed lambda calculus with bools
+- Simply typed lambda calculus with subtyping, records, projections
